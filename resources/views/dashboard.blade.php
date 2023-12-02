@@ -3,7 +3,8 @@
 @section('content')
 <div class="container">
     <h2 class="fs-4 text-secondary my-4">
-        {{ __('Dashboard') }}
+        Welcome to your <span class="text-uppercase">dashboard</span>,
+        <span class="text-primary-emphasis">{{ Auth::user()->name }}</span>
     </h2>
     <div class="row justify-content-center">
         <div class="col">
