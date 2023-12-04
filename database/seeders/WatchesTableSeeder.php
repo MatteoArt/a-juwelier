@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Watch;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class WatchesTableSeeder extends Seeder
 {
@@ -19,6 +20,7 @@ class WatchesTableSeeder extends Seeder
             $newWatch = new Watch();
             $newWatch->brand = $dato['brand'];
             $newWatch->model = $dato['model'];
+            $newWatch->slug = Str::slug($dato['brand'].' '.$dato['model'],'-');
             $newWatch->price = $dato['price'];
             $newWatch->ref = $dato['ref'];
             $newWatch->characteristics = $dato['characteristics'];

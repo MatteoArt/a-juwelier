@@ -1,2 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 @use "@fortawesome/fontawesome-free/css/all.min.css";
+
+.my-img-container {
+    height: 342px;
+    overflow: hidden;
+}

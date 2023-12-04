@@ -18,21 +18,28 @@
                             </div>
                         @endif
 
-                        <div class="row">
+                        <div class="row row-gap-3">
                             @foreach ($watches as $watch)
                                 <div class="col-sm-4">
-                                    <div class="card">
+                                    <div class="card h-100">
                                         @php
                                             $path = json_decode($watch->images)
                                         @endphp
-                                        <img src="{{ $path[0] }}" class="card-img-top" alt="...">
+                                        <div class="my-img-container">
+                                            <img src="{{ $path[0] }}" class="card-img-top" alt="{{ $watch->brand }}">
+                                        </div>
+                                        
                                         <div class="card-body">
                                             <h5 class="card-title"> {{ $watch->brand }} </h5>
                                             <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $watch->model }} </h6>
-                                            <span>Price: €{{ $watch->price }}</span>
-                                            <p class="card-text">Some quick example text to build on the card title and make
-                                                up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            <div>Price: <span class="d-inline-block ms-1">€ {{ $watch->price }}</span></div>
+                                            <div class="mt-3">Characteristics:</div>
+                                            <p class="card-text">
+                                                {{ $watch->characteristics }}.
+                                            </p>
+                                            <a href="#" class="btn btn-outline-info">
+                                                <i class="fa-solid fa-eye fa-lg"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
