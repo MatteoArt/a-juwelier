@@ -19,8 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/* CRUD **************/
+//index di tutti gli orologi
 Route::get('/dashboard', [WatchController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('dashboard');
+
+//show, create, update, delete
+Route::middleware(['auth', 'verified'])->prefix('watches')
+->name('watches.')->group(function () {
+    //show
+    Route::get('/{slug}', [WatchController::class, 'show'])->name('show');
+
+    //create e store
+    Route::get('form/create', [WatchController::class, 'create'])->name('create');
+});
+
+/* ******************/
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

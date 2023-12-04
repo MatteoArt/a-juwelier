@@ -7,7 +7,6 @@
             <span class="text-primary-emphasis">{{ Auth::user()->name }}</span>
         </h2>
         <div class="row justify-content-center">
-            @dump($watches)
             <div class="col">
                 <div class="card">
                     <div class="card-header">See all your watches</div>
@@ -23,21 +22,26 @@
                                 <div class="col-sm-4">
                                     <div class="card h-100">
                                         @php
-                                            $path = json_decode($watch->images)
+                                            $path = json_decode($watch->images);
                                         @endphp
                                         <div class="my-img-container">
                                             <img src="{{ $path[0] }}" class="card-img-top" alt="{{ $watch->brand }}">
                                         </div>
-                                        
+
                                         <div class="card-body">
                                             <h5 class="card-title"> {{ $watch->brand }} </h5>
                                             <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $watch->model }} </h6>
-                                            <div>Price: <span class="d-inline-block ms-1">€ {{ $watch->price }}</span></div>
+                                            <div>Ref. {{ $watch->ref }}</div>
+                                            <div class="mt-2">Price: <span class="d-inline-block ms-1">
+                                                    € {{ number_format((float)$watch->price, 2, '.', '') }}
+                                                </span>
+                                            </div>
                                             <div class="mt-3">Characteristics:</div>
                                             <p class="card-text">
                                                 {{ $watch->characteristics }}.
                                             </p>
-                                            <a href="#" class="btn btn-outline-info">
+                                            <a href="{{ route('watches.show', $watch->slug) }}"
+                                                class="btn btn-outline-info">
                                                 <i class="fa-solid fa-eye fa-lg"></i>
                                             </a>
                                         </div>

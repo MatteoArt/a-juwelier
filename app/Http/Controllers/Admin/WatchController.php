@@ -18,4 +18,13 @@ class WatchController extends Controller
             'watches' => $watches
         ]);
     }
+
+    public function show($slug) {
+
+        $watch = Watch::where('slug', $slug)->first();
+
+        return view('watches.show', [
+            'watch' => $watch
+        ]);
+    }
 }
