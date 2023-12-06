@@ -29,10 +29,11 @@ Route::get('/dashboard', [WatchController::class, 'index'])
 Route::middleware(['auth', 'verified'])->prefix('watches')
 ->name('watches.')->group(function () {
     //show
-    Route::get('/{slug}', [WatchController::class, 'show'])->name('show');
+    Route::get('watch/{slug}', [WatchController::class, 'show'])->name('show');
 
     //create e store
     Route::get('form/create', [WatchController::class, 'create'])->name('create');
+    Route::post('form/submit', [WatchController::class, 'store'])->name('store');
 });
 
 /* ******************/

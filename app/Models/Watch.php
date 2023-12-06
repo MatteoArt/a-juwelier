@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Watch extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'brand',
+        'model',
+        'price',
+        'ref',
+        'characteristics',
+        'images'
+    ];
 }

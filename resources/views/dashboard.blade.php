@@ -2,10 +2,13 @@
 
 @section('content')
     <div class="container">
-        <h2 class="fs-4 text-secondary my-4">
-            Welcome to your <span class="text-uppercase">dashboard</span>,
-            <span class="text-primary-emphasis">{{ Auth::user()->name }}</span>
-        </h2>
+        <div class="d-flex align-items-center justify-content-between">
+            <h2 class="fs-4 text-secondary my-4">
+                Welcome to your <span class="text-uppercase">dashboard</span>,
+                <span class="text-primary-emphasis">{{ Auth::user()->name }}</span>
+            </h2>
+            <a href="{{ route('watches.create') }}" class="btn btn-outline-success">Add <i class="fa-solid fa-plus"></i></a>
+        </div>
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
@@ -33,7 +36,7 @@
                                             <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $watch->model }} </h6>
                                             <div>Ref. {{ $watch->ref }}</div>
                                             <div class="mt-2">Price: <span class="d-inline-block ms-1">
-                                                    € {{ number_format((float)$watch->price, 2, '.', '') }}
+                                                    € {{ number_format((float) $watch->price, 2, '.', '') }}
                                                 </span>
                                             </div>
                                             <div class="mt-3">Characteristics:</div>

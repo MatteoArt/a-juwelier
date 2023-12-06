@@ -27,4 +27,22 @@ class WatchController extends Controller
             'watch' => $watch
         ]);
     }
+
+    public function create() {
+        return view('watches.create');
+    }
+
+    public function store(Request $request) {
+        $data = $request->all();
+
+        $data['images'] = json_encode(explode(",", $data['images']));
+
+        //aggiungi lo slug
+
+        $newWatch = new Watch();
+        $newWatch->fill($data);
+        $newWatch->save();
+
+        return redirect()->route('dashboard');
+    }
 }
