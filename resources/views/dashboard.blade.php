@@ -53,12 +53,13 @@
                                                         Edit
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
-                                                    <form action="{{ route('watches.destroy', $watch->slug) }}" class="d-inline-block ms-1" method="POST">
+                                                    <form action="{{ route('watches.destroy', $watch->slug) }}" class="d-inline-block ms-1 my-delete" method="POST">
                                                         @csrf
 
                                                         @method('DELETE')
 
-                                                        <button type="submit" class="btn btn-outline-danger">
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm('Are you sure you want to proceed?')">
                                                             Delete
                                                             <i class="fa-solid fa-trash"></i>
                                                         </button>
