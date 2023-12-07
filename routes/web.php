@@ -34,6 +34,13 @@ Route::middleware(['auth', 'verified'])->prefix('watches')
     //create e store
     Route::get('form/create', [WatchController::class, 'create'])->name('create');
     Route::post('form/submit', [WatchController::class, 'store'])->name('store');
+
+    //edit e update
+    Route::get('watch/{slug}/edit', [WatchController::class, 'edit'])->name('edit');
+    Route::put('watch/{slug}', [WatchController::class, 'update'])->name('update');
+
+    //delete (destroy)
+    Route::delete('watch/{slug}', [WatchController::class, 'destroy'])->name('destroy');
 });
 
 /* ******************/

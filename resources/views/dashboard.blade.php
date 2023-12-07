@@ -31,7 +31,7 @@
                                             <img src="{{ $path[0] }}" class="card-img-top" alt="{{ $watch->brand }}">
                                         </div>
 
-                                        <div class="card-body">
+                                        <div class="card-body d-flex flex-column">
                                             <h5 class="card-title"> {{ $watch->brand }} </h5>
                                             <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $watch->model }} </h6>
                                             <div>Ref. {{ $watch->ref }}</div>
@@ -43,10 +43,29 @@
                                             <p class="card-text">
                                                 {{ $watch->characteristics }}.
                                             </p>
-                                            <a href="{{ route('watches.show', $watch->slug) }}"
-                                                class="btn btn-outline-info">
-                                                <i class="fa-solid fa-eye fa-lg"></i>
-                                            </a>
+                                            <div class="d-flex justify-content-between mt-auto">
+                                                <a href="{{ route('watches.show', $watch->slug) }}"
+                                                    class="btn btn-outline-info">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                                <div>
+                                                    <a href="{{ route('watches.edit', $watch->slug) }}" class="btn btn-outline-warning">
+                                                        Edit
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </a>
+                                                    <form action="{{ route('watches.destroy', $watch->slug) }}" class="d-inline-block ms-1" method="POST">
+                                                        @csrf
+
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            Delete
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

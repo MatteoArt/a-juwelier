@@ -2,6 +2,7 @@
 
 
 @section('content')
+    <a href="{{ route('dashboard') }}" class="btn btn-outline-dark m-3"><i class="fa-solid fa-arrow-left"></i> Back</a> 
     <div class="container py-3">
         <h2>Add a watch</h2>
 
