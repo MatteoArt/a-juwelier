@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\WatchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//in tutte le rotte api è sottointeso /api davanti all'uri della rotta, esempio /api/watches
+Route::get('watches', [WatchController::class, 'index']);
+Route::get('watches/{slug}', [WatchController::class, 'show']);

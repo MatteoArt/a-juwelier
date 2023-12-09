@@ -15,7 +15,8 @@
 
                 @method('DELETE')
 
-                <button type="submit" class="btn btn-outline-danger">
+                <button type="submit" class="btn btn-outline-danger"
+                onclick="return confirm('Are you sure you want to proceed?')">
                     Delete
                     <i class="fa-solid fa-trash"></i>
                 </button>
