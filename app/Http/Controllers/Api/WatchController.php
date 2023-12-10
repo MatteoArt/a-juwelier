@@ -21,6 +21,8 @@ class WatchController extends Controller
     public function show($slug) {
         $watch = Watch::where('slug', $slug)->first();
 
-        return response()->json($watch);
+        return response()->json([
+            'result' => $watch
+        ]);
     }
 }
