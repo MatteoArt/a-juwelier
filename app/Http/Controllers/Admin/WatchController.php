@@ -40,6 +40,8 @@ class WatchController extends Controller
     {
         $data = $request->all();
 
+        //per upload file fatto: file disc public, creato link php artisan storage:link
+        //e aggiunto enctype
         $data['images'] = json_encode(explode(",", $data['images']));
 
         $labels = [

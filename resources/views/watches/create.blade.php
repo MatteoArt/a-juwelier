@@ -6,7 +6,8 @@
     <div class="container py-3">
         <h2>Add a watch</h2>
 
-        <form action="{{ route('watches.store') }}" method="POST" class="w-50">
+        <form action="{{ route('watches.store') }}" method="POST" enctype="multipart/form-data"
+        class="w-50">
             @csrf
 
             <div class="mb-3">
