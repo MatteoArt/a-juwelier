@@ -16,6 +16,7 @@ class Watch extends Model
         'price',
         'ref',
         'characteristics',
-        'images'
+        'images',
+        'labels'
     ];
 }

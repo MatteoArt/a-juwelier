@@ -42,6 +42,20 @@ class WatchController extends Controller
 
         $data['images'] = json_encode(explode(",", $data['images']));
 
+        $labels = [
+            'Reference',
+            'Condition',
+            'Watch Strap',
+            'Dial',
+            'Size',
+            'Style',
+            'Scope of delivery',
+            'Construction year',
+            'Material of the casing'
+        ];
+
+        $data['labels'] = json_encode($labels);
+
         //aggiungi lo slug
         $data['slug'] = $this->generateSlug($data['brand'] . ' ' . $data['model']);
 
@@ -70,6 +84,24 @@ class WatchController extends Controller
         $data = $request->all();
 
         $data['images'] = json_encode(explode(",", $data['images']));
+
+        
+        $labels = [
+            'Reference',
+            'Condition',
+            'Watch Strap',
+            'Dial',
+            'Size',
+            'Style',
+            'Scope of delivery',
+            'Construction year',
+            'Material of the casing'
+        ];
+        //se è null il campo delle etichette dell'orologio da modificare allora lo inizializzo
+        if (is_null($watchToEdit->labels)) {
+            $watchToEdit->labels = json_encode($labels);
+        }
+
         if ($data['brand'] == $watchToEdit->brand && $data['model'] == $watchToEdit->model) {
             $data['slug'] = $watchToEdit->slug;
         } else { //se è cambiato il modello o la marca dell'orologio modifico lo slug
