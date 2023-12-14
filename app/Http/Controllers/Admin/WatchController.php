@@ -45,15 +45,16 @@ class WatchController extends Controller
         $data['images'] = json_encode(explode(",", $data['images']));
 
         $labels = [
-            'Reference',
-            'Condition',
-            'Watch Strap',
-            'Dial',
-            'Size',
-            'Style',
-            'Scope of delivery',
-            'Construction year',
-            'Material of the casing'
+            'Brand',
+            'Model',
+            'Ref. No.',
+            'Case Size',
+            'Case Material',
+            'Bezel',
+            'Bracelet Material',
+            'Box',
+            'Cards/Papers',
+            'Condition'
         ];
 
         $data['labels'] = json_encode($labels);
@@ -89,18 +90,21 @@ class WatchController extends Controller
 
         
         $labels = [
-            'Reference',
-            'Condition',
-            'Watch Strap',
-            'Dial',
-            'Size',
-            'Style',
-            'Scope of delivery',
-            'Construction year',
-            'Material of the casing'
+            'Brand',
+            'Model',
+            'Ref. No.',
+            'Case Size',
+            'Case Material',
+            'Bezel',
+            'Bracelet Material',
+            'Box',
+            'Cards/Papers',
+            'Condition'
         ];
         //se è null il campo delle etichette dell'orologio da modificare allora lo inizializzo
         if (is_null($watchToEdit->labels)) {
+            $watchToEdit->labels = json_encode($labels);
+        } else if (json_decode($watchToEdit->labels) !== $labels) {
             $watchToEdit->labels = json_encode($labels);
         }
 
