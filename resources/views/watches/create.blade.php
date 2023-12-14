@@ -31,8 +31,8 @@
                 <textarea name="characteristics" class="form-control" id="formTextarea1" rows="3"></textarea>
             </div>
             <div class="mb-3">
-                <label for="formTextarea2" class="form-label text-body-secondary">Images</label>
-                <textarea name="images" class="form-control" id="formTextarea2" rows="3"></textarea>
+                <label for="imagesInput" class="form-label text-body-secondary">Images</label>
+                <input type="file" class="form-control" name="images[]" id="imagesInput" accept="image/*" multiple>
             </div>
             <button type="submit" class="btn btn-outline-success mb-2">Send</button>
         </form>
