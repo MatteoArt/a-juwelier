@@ -34,9 +34,12 @@
             @php
                 $strings = explode(',', $watch->characteristics);
             @endphp
-            <ul class="list-group list-group-flush w-25">
+            <ul class="list-group list-group-flush w-50">
                 @foreach ($strings as $string)
-                    <li class="list-group-item">{{ ucfirst(trim($string)) }}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold">{{ $labels[$loop->index] }}</span>
+                        <div style="width: 234.883px">{{ ucfirst(trim($string)) }}</div>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -47,7 +50,7 @@
                     $imagesArr = json_decode($watch->images);
                 @endphp
                 @foreach ($imagesArr as $image)
-                    <img src="{{ $image }}" class="img-thumbnail my-thumb-show me-3"
+                    <img src="{{ asset('/storage/' . $image) }}" class="img-thumbnail my-thumb-show me-3"
                         alt="{{ $watch->brand . $loop->index }}">
                 @endforeach
             </div>

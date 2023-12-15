@@ -28,7 +28,7 @@
                                             $path = json_decode($watch->images);
                                         @endphp
                                         <div class="my-img-container">
-                                            <img src="{{ $path[0] }}" class="card-img-top" alt="{{ $watch->brand }}">
+                                            <img src="{{ asset('/storage/' . $path[0]) }}" class="card-img-top" alt="{{ $watch->brand }}">
                                         </div>
 
                                         <div class="card-body d-flex flex-column">

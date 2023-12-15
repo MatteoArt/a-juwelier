@@ -26,11 +26,24 @@ class WatchController extends Controller
 
     public function show($slug)
     {
+        $labels = [
+            'Brand',
+            'Model',
+            'Ref. No.',
+            'Case Size',
+            'Case Material',
+            'Bezel',
+            'Bracelet Material',
+            'Box',
+            'Cards/Papers',
+            'Condition'
+        ];
 
         $watch = Watch::where('slug', $slug)->first();
 
         return view('watches.show', [
-            'watch' => $watch
+            'watch' => $watch,
+            'labels' => $labels
         ]);
     }
 
@@ -65,16 +78,22 @@ class WatchController extends Controller
         //aggiungi lo slug
         $data['slug'] = $this->generateSlug($data['brand'] . ' ' . $data['model']);
 
+        //array che conterrà la lista dei path delle immagini caricate
+        $imagesList = [];
+        $folder = $data['model'].'folder'.time().rand(); //sempre diversa ad ogni chiamata di store() in base alla funzione time()
         //gestione delle immagini
         if ($request->has('images')) {
             //ciclo sull'array di istanze di file che mi viene passato nella request
             foreach ($request->file('images') as $imageFile) {
-                $image_name = $data['model'].'-image-'.time().rand(1,1000).'.'.$imageFile->extension();
-                //ora spostiamo l'immagine dentro lo storage dentro una cartella che sarà
-                //sempre diversa in base alla funzione time()
-                $imageFile->move(public_path('watch_folder'.time()),$image_name); //questa riga da rivedere
+                $image_name = $data['model'].'-image-'.time().rand(1,1000).'.'.$imageFile->getClientOriginalExtension();
+                //ora spostiamo l'immagine dentro lo storage dentro la cartella creata sopra
+                $image_path = $imageFile->storeAs($folder, $image_name, 'public');
+
+                array_push($imagesList, $image_path);
             }
         }
+
+        $data['images'] = json_encode($imagesList);
 
         $newWatch = new Watch();
         $newWatch->fill($data);
