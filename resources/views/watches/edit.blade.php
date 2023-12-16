@@ -5,7 +5,7 @@
     <a href="{{ route('dashboard') }}" class="btn btn-outline-dark m-3"><i class="fa-solid fa-arrow-left"></i> Back to dashboard</a>
     <div class="container py-3">
         <h2>Edit watch</h2>
-        <form action="{{ route('watches.update', $watch->slug) }}" method="POST" class="w-50">
+        <form action="{{ route('watches.update', $watch->slug) }}" method="POST" class="w-50" enctype="multipart/form-data">
             @csrf
 
             @method('PUT')
@@ -33,7 +33,7 @@
                 <textarea name="characteristics" class="form-control" id="formTextarea1" rows="3">{{ str_replace('        ','',$watch->characteristics) }}</textarea>
             </div>
             <div class="mb-3">
-                <label for="formTextarea2" class="form-label text-body-secondary">Images</label>
+                <label for="imagesInput" class="form-label text-body-secondary">Images</label>
                 @php
                     $imagesArr = json_decode($watch->images);
                 @endphp
@@ -45,7 +45,7 @@
                     @endforeach
                 </div>
 
-                <textarea name="images" class="form-control" id="formTextarea2" rows="3"></textarea>
+                <input type="file" class="form-control" name="images[]" id="imagesInput" accept="image/*" multiple>
             </div>
             <button type="submit" class="btn btn-outline-success mb-2">Send</button>
         </form>

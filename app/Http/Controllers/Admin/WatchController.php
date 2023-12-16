@@ -56,10 +56,6 @@ class WatchController extends Controller
     {
         $data = $request->all();
 
-        //per upload file fatto: file disc public, creato link php artisan storage:link
-        //e aggiunto enctype
-        //$data['images'] = json_encode(explode(",", $data['images']));
-
         $labels = [
             'Brand',
             'Model',
@@ -80,12 +76,12 @@ class WatchController extends Controller
 
         //array che conterrà la lista dei path delle immagini caricate
         $imagesList = [];
-        $folder = $data['model'].'folder'.time().rand(); //sempre diversa ad ogni chiamata di store() in base alla funzione time()
+        $folder = $data['model'] . 'folder' . time() . rand(); //sempre diversa ad ogni chiamata di store() in base alla funzione time()
         //gestione delle immagini
         if ($request->has('images')) {
             //ciclo sull'array di istanze di file che mi viene passato nella request
             foreach ($request->file('images') as $imageFile) {
-                $image_name = $data['model'].'-image-'.time().rand(1,1000).'.'.$imageFile->getClientOriginalExtension();
+                $image_name = $data['model'] . '-image-' . time() . rand(1, 1000) . '.' . $imageFile->getClientOriginalExtension();
                 //ora spostiamo l'immagine dentro lo storage dentro la cartella creata sopra
                 $image_path = $imageFile->storeAs($folder, $image_name, 'public');
 
@@ -118,10 +114,17 @@ class WatchController extends Controller
         $watchToEdit = Watch::where('slug', $slug)->firstOrFail();
 
         $data = $request->all();
-
-        $data['images'] = json_encode(explode(",", $data['images']));
-
         
+        //se non vengono passate immagini vuol dire che non si vogliono modificare le
+        //immagini associate all'orologio e quindi rimangono quelle vecchie
+        if ($request->has('images')) {
+            //recupero i path delle vecchie immagini dell'orologio che voglio modificare
+            $old_images = json_decode($watchToEdit->images);
+            dd($old_images);
+            dd($request->file('images'));
+        }
+        dd($request->file('images'));
+
         $labels = [
             'Brand',
             'Model',
@@ -153,7 +156,8 @@ class WatchController extends Controller
     }
 
 
-    public function destroy($slug) {
+    public function destroy($slug)
+    {
         $watchToDelete = Watch::where('slug', $slug)->firstOrFail();
 
         $watchToDelete->delete();
