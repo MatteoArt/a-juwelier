@@ -114,13 +114,19 @@ class WatchController extends Controller
         $watchToEdit = Watch::where('slug', $slug)->firstOrFail();
 
         $data = $request->all();
-        
+
+        //recupero i path delle vecchie immagini dell'orologio che voglio modificare
+        $old_images = json_decode($watchToEdit->images);
+
         //se non vengono passate immagini vuol dire che non si vogliono modificare le
         //immagini associate all'orologio e quindi rimangono quelle vecchie
         if ($request->has('images')) {
-            //recupero i path delle vecchie immagini dell'orologio che voglio modificare
-            $old_images = json_decode($watchToEdit->images);
-            dd($old_images);
+            foreach ($request->file('images') as $index => $image) {
+                $newImageName = $data['model'].'-image-'.time().rand(1, 1000).'.'.$image->getClientOriginalExtension();
+                dd($newImageName);
+                //ora recupera vecchia immagine e poi cancellala ma prima recupera certella di immagini
+                //di questo orologio
+            }
             dd($request->file('images'));
         }
         dd($request->file('images'));

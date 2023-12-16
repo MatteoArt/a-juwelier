@@ -40,7 +40,7 @@
                 <div class="my-old-img-container pb-3 pt-2 mb-3">
                     <p>Old images</p>
                     @foreach ($imagesArr as $image)
-                        <img src="{{ $image }}" class="img-thumbnail my-thumb"
+                        <img src="{{ asset('/storage/' . $image) }}" class="img-thumbnail my-thumb"
                             alt="{{ $watch->brand . $loop->index }}">
                     @endforeach
                 </div>
