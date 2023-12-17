@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\Watch;
+use Illuminate\Support\Facades\Storage;
 
 class WatchController extends Controller
 {
@@ -118,18 +119,39 @@ class WatchController extends Controller
         //recupero i path delle vecchie immagini dell'orologio che voglio modificare
         $old_images = json_decode($watchToEdit->images);
 
+        //recupero il nome della cartella dove si trovano le immagini dell'orologio da modificare
+        $directory_name = dirname($old_images[0]);
+
+        $newImagesList = [];
         //se non vengono passate immagini vuol dire che non si vogliono modificare le
         //immagini associate all'orologio e quindi rimangono quelle vecchie
         if ($request->has('images')) {
             foreach ($request->file('images') as $index => $image) {
                 $newImageName = $data['model'].'-image-'.time().rand(1, 1000).'.'.$image->getClientOriginalExtension();
-                dd($newImageName);
-                //ora recupera vecchia immagine e poi cancellala ma prima recupera certella di immagini
-                //di questo orologio
+                
+                //ora recupera vecchia immagine e poi cancellala solo se quella chiave esiste nell'array
+                //originario delle vecchie immagini (l'utente potrebbe passarmi più immagini di quelle
+                //memorizzate in precedenza)
+                if (array_key_exists($index,$old_images)) {
+                    $old_img = $old_images[$index];
+
+                    if (Storage::exists($old_img) ) {
+                        Storage::delete($old_img); //elimino immagine vecchia
+                    }
+                }
+
+                //memorizzo la nuova immagine
+                $new_image_path = $image->storeAs($directory_name, $newImageName, 'public');
+
+                array_push($newImagesList, $new_image_path);
+                
             }
-            dd($request->file('images'));
+            
+            $data['images'] = json_encode($newImagesList);
+            
+        } else { //significa che non si vogliono modificare le foto e quindi rimangono invariate
+            $data['images'] = $old_images;
         }
-        dd($request->file('images'));
 
         $labels = [
             'Brand',
