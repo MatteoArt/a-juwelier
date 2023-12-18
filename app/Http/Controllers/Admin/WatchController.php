@@ -188,6 +188,13 @@ class WatchController extends Controller
     {
         $watchToDelete = Watch::where('slug', $slug)->firstOrFail();
 
+        if ($watchToDelete->images) {
+            $images = json_decode($watchToDelete->images);
+            $directory = dirname($images[0]);
+
+            Storage::deleteDirectory($directory);
+        }
+
         $watchToDelete->delete();
 
         return redirect()->route('dashboard');
