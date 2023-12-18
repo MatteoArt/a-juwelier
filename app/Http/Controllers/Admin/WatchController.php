@@ -50,12 +50,28 @@ class WatchController extends Controller
 
     public function create()
     {
-        return view('watches.create');
+        $labels = [
+            'Brand',
+            'Model',
+            'Ref. No.',
+            'Case Size',
+            'Case Material',
+            'Bezel',
+            'Bracelet Material',
+            'Box',
+            'Cards/Papers',
+            'Condition'
+        ];
+
+        return view('watches.create', [
+            'labels' => $labels
+        ]);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
+        
 
         $labels = [
             'Brand',
@@ -69,6 +85,10 @@ class WatchController extends Controller
             'Cards/Papers',
             'Condition'
         ];
+
+        $characteristics = $data['characteristics'];
+        
+        $data['characteristics'] = json_encode($characteristics);
 
         $data['labels'] = json_encode($labels);
 
@@ -90,7 +110,8 @@ class WatchController extends Controller
             }
         }
 
-        $data['images'] = json_encode($imagesList);
+        //faccio reverse perchè altrimenti mi carica prima le ultime selezionate
+        $data['images'] = json_encode(array_reverse($imagesList));
 
         $newWatch = new Watch();
         $newWatch->fill($data);
@@ -147,7 +168,8 @@ class WatchController extends Controller
                 
             }
             
-            $data['images'] = json_encode($newImagesList);
+            //faccio reverse perchè altrimenti mi carica prima le ultime selezionate
+            $data['images'] = json_encode(array_reverse($newImagesList));
             
         } else { //significa che non si vogliono modificare le foto e quindi rimangono invariate
             $data['images'] = $old_images;

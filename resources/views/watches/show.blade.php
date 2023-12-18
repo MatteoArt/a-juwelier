@@ -32,7 +32,7 @@
         <div class="mt-3">
             <span>Characteristics:</span>
             @php
-                $strings = explode(',', $watch->characteristics);
+                $strings = json_decode($watch->characteristics);
             @endphp
             <ul class="list-group list-group-flush w-50">
                 @foreach ($strings as $string)

@@ -40,8 +40,17 @@
                                                 </span>
                                             </div>
                                             <div class="mt-3">Characteristics:</div>
+                                            @php
+                                                $strings = json_decode($watch->characteristics)
+                                            @endphp
                                             <p class="card-text">
-                                                {{ $watch->characteristics }}.
+                                                @foreach ($strings as $string)
+                                                    @if($loop->last)
+                                                        <span>{{ $string }}.</span>
+                                                    @else 
+                                                        <span>{{ $string }},</span>
+                                                    @endif
+                                                @endforeach
                                             </p>
                                             <div class="d-flex justify-content-between mt-auto">
                                                 <a href="{{ route('watches.show', $watch->slug) }}"
