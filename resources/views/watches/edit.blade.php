@@ -27,10 +27,18 @@
                 <input type="text" name="ref" class="form-control" id="refInput" value="{{ $watch->ref }}">
             </div>
             <div class="mb-3">
-                <label for="formTextarea1" class="form-label text-body-secondary">Characteristics</label>
-                
-                
-                <textarea name="characteristics" class="form-control" id="formTextarea1" rows="3">{{ str_replace('        ','',$watch->characteristics) }}</textarea>
+                @php
+                    $labels = json_decode($watch->labels);
+                    $characteristics = json_decode($watch->characteristics)
+                @endphp
+                <fieldset class="border p-4">
+                    <legend style="font-size: 1.3rem" class="text-body-secondary mb-3">Characteristics</legend>
+                    @foreach ($labels as $label)
+                        <label for="label{{ $label }}" class="form-label text-body-secondary">{{ $label }}</label>
+                        <input type="text" name="characteristics[]" class="form-control" id="label{{ $label }}"
+                        value="{{ $characteristics[$loop->index] }}">
+                    @endforeach
+                </fieldset>
             </div>
             <div class="mb-3">
                 <label for="imagesInput" class="form-label text-body-secondary">Images</label>

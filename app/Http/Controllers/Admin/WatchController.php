@@ -147,6 +147,12 @@ class WatchController extends Controller
         //se non vengono passate immagini vuol dire che non si vogliono modificare le
         //immagini associate all'orologio e quindi rimangono quelle vecchie
         if ($request->has('images')) {
+            //se mi vengono passate meno immagini di quelle presenti in precedenza allora prima di
+            //caricare le nuove pulisco la cartella da tutte le immagini vecchie 
+            if (count($request->file('images')) < count($old_images)) {
+                $files = Storage::files($directory_name);
+                Storage::delete($files);
+            }
             foreach ($request->file('images') as $index => $image) {
                 $newImageName = $data['model'].'-image-'.time().rand(1, 1000).'.'.$image->getClientOriginalExtension();
                 
