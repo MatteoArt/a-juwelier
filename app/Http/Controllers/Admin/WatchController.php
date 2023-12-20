@@ -8,6 +8,7 @@ use Intervention\Image\Drivers\Imagick\Driver;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Requests\StoreWatchRequest;
 
 use App\Models\Watch;
 use Illuminate\Support\Facades\Storage;
@@ -68,9 +69,10 @@ class WatchController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreWatchRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
+        dd($data);
         
 
         $labels = [
