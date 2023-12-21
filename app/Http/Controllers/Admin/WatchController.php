@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\StoreWatchRequest;
+use App\Http\Requests\UpdateWatchRequest;
 
 use App\Models\Watch;
 use Illuminate\Support\Facades\Storage;
@@ -72,9 +73,7 @@ class WatchController extends Controller
     public function store(StoreWatchRequest $request)
     {
         $data = $request->validated();
-        dd($data);
         
-
         $labels = [
             'Brand',
             'Model',
@@ -132,12 +131,12 @@ class WatchController extends Controller
     }
 
 
-    public function update(Request $request, $slug)
+    public function update(UpdateWatchRequest $request, $slug)
     {
         //recupero dal db l'orologio che voglio modificare
         $watchToEdit = Watch::where('slug', $slug)->firstOrFail();
 
-        $data = $request->all();
+        $data = $request->validated();
 
         //recupero i path delle vecchie immagini dell'orologio che voglio modificare
         $old_images = json_decode($watchToEdit->images);
