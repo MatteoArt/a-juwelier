@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Contact;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewContact;
 
 class ContactController extends Controller
 {
@@ -14,9 +17,17 @@ class ContactController extends Controller
             'message' => 'nullable|string|min:30'
         ]);
 
+        //creo il nuovo contatto per poi salvarlo a db
+        $newContact = new Contact();
+        $newContact->fill($data);
+        $newContact->save();
+
+        //invio la mail
+        $admin_mail = 'admin.mail@gmail.com';
+        Mail::to($admin_mail)->send(new NewContact($data));
+
         return response()->json([
-            'result' => $data,
-            'success' => true
-        ]);
+            "response" => "Thanks you {$data['name']} for contacting us, we'll be in touch very soon"
+        ], 201);
     }
 }
