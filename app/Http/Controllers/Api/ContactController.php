@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewContact;
+use App\Mail\MailToUser;
 
 class ContactController extends Controller
 {
@@ -22,12 +23,17 @@ class ContactController extends Controller
         $newContact->fill($data);
         $newContact->save();
 
-        //invio la mail
+        //invio la mail all'amministratore per notificarlo di un nuovo messaggio dal suo
+        //sito
         $admin_mail = 'admin.mail@gmail.com';
         Mail::to($admin_mail)->send(new NewContact($data));
 
+        //invio anche una mail di conferma all'utente che ha compilato il form
+        Mail::to($data['email'])->send(new MailToUser($data));
+
+        //ritorno un messaggio di successo al front end
         return response()->json([
-            "response" => "Thanks you {$data['name']} for contacting us, we'll be in touch very soon"
+            "response" => "Message sent successfully. We will get back to you shortly!"
         ], 201);
     }
 }
