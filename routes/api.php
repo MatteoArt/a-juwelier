@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\WatchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //in tutte le rotte api è sottointeso /api davanti all'uri della rotta, esempio /api/watches
 Route::get('watches', [WatchController::class, 'index']);
 Route::get('watches/{slug}', [WatchController::class, 'show']);
+
 Route::post('contacts', [ContactController::class, 'store']);
+Route::post('proposals', [ProposalController::class, 'store']);
