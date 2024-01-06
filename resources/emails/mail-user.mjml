@@ -1,0 +1,28 @@
+<mjml>
+    <mj-body>
+        <mj-section background-color="#f0f0f0">
+            <mj-column>
+                <mj-text align="center" font-size="20px"
+                font-family="'Courier New', Courier, monospace"
+                color="#626262">
+                    A Juwelier
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#F4F3EF">
+            <mj-column>
+                <mj-image width="150px" src="{{ asset('images/a-juwelier.jpg') }}" alt="a juwelier" />
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+                <mj-text align="center" font-weight="600" font-size="15px">
+                    Hi {{ $data['name'] }}, 
+                </mj-text>
+                <mj-text align="center">
+                    thank you for contacting us, we'll be in touch very soon.
+                </mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>
