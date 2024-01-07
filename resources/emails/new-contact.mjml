@@ -17,32 +17,28 @@
         </mj-section>
         <mj-section>
             <mj-column>
-                <mj-text align="center" font-weight="600" font-size="18px">
-                    Hi {{ $data['name'] }}, 
+                <mj-text align="center" font-size="18px">
+                    Hi, you have a new contact from a user on your web site.
                 </mj-text>
                 <mj-text align="center" font-size="16px">
-                    thank you for contacting us, we'll be in touch very soon.
+                    Message sent by <span style="font-weight:500;">{{ $input_data['name'] }}</span>
                 </mj-text>
             </mj-column>
         </mj-section>
         <mj-section>
             <mj-column>
-            <mj-text align="center" font-size="13px">
-                Follow us on
-            </mj-text>
-              <mj-social icon-size="15px" mode="horizontal">
-                  <mj-social-element href="https://www.instagram.com/ajuwelierluxury/?igsh=ZGNjOWZkYTE3MQ%3D%3D&utm_source=qr"
-                  src="{{ asset('images/instagram.svg') }}">
-                    
-                  </mj-social-element>
-                  <mj-social-element href="https://www.tiktok.com/@a.juwelier?_t=8iXKFNjt4fh&_r=1"
-                  src="{{ asset('images/tiktok.svg') }}">
-                    
-                  </mj-social-element>
-                  <mj-social-element href="https://x.com/ajuwelier59583?s=11" src="{{ asset('images/x-twitter.svg') }}">
-                    
-                  </mj-social-element>
-              </mj-social>
+              <mj-text align="left" font-size="16px">
+                User details:
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Name: <span style="font-weight:500;">{{ $input_data['name'] }}</span>
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Email address: <span style="font-weight:500;">{{ $input_data['email'] }}</span>
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Message: <span style="font-weight:500;">{{ $input_data['message'] }}</span>
+              </mj-text>
             </mj-column>
         </mj-section>
         <mj-section>

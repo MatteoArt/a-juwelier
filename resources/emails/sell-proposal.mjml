@@ -1,0 +1,124 @@
+<mjml>
+    <mj-body>
+        <mj-section background-color="#f0f0f0">
+            <mj-column>
+                <mj-text align="center" font-size="25px"
+                font-family="'Courier New', Courier, monospace"
+                color="#626262">
+                    A Juwelier
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#F4F3EF">
+            <mj-column>
+                <mj-image width="150px" src="{{ asset('images/a-juwelier.jpg') }}"
+                href="http://localhost:5174/" alt="a juwelier" />
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+                <mj-text align="center" font-size="19px">
+                    Hi, you have a new contact from a user on your web site.
+                </mj-text>
+                <mj-text align="center" font-size="17px">
+                    A new watch sale proposal by <span style="font-weight:500;">{{ $data['fullname'] }}</span>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+              <mj-text align="left" font-size="16px">
+                User details:
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Fullname: <span style="font-weight:500;">{{ $data['fullname'] }}</span>
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Email: <span style="font-weight:500;">{{ $data['email'] }}</span>
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Phone number: <span style="font-weight:500;">{{ $data['phone'] }}</span>
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                City:
+                @if ($data['city'])
+                <span style="font-weight:500;">{{ $data['city'] }}</span>
+                @else 
+                <span>//</span>
+                @endif
+              </mj-text>
+              <mj-text align="left" font-size="16px">
+                Address:
+                @if ($data['address'])
+                <span style="font-weight:500;">{{ $data['address'] }}</span>
+                @else 
+                <span>//</span>
+                @endif
+              </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column width="100%">
+                <mj-text align="left" font-size="17px">
+                    Informations about the watch
+                </mj-text>
+            </mj-column>
+            <mj-raw>
+                @foreach ($labels as $label)
+            </mj-raw>
+               <mj-column width="33%">
+                   <mj-text align="left" font-size="16px">
+                     {{ $label }}:
+                     @if ($data['informations'][$loop->index])
+                       <span style="font-weight:500;">{{ $data['informations'][$loop->index] }}</span>
+                     @else 
+                       <span>//</span>
+                     @endif
+                   </mj-text>
+               </mj-column>
+               <mj-raw>
+                  @endforeach
+               </mj-raw>
+        </mj-section>
+        <mj-section>
+            <mj-column width="100%">
+                <mj-text align="left" font-size="17px">
+                    Images:
+                </mj-text>
+            </mj-column>
+
+            <mj-raw>
+                 @if (isset($data['photo1']))
+            </mj-raw>
+            <mj-column width="230px">
+                <mj-image width="230px" src="{{ asset('/storage/' . $data['photo1']) }}" alt="photo1_watch" />
+            </mj-column>
+            <mj-raw>
+               @endif 
+            </mj-raw>
+            <mj-column width="0">
+                
+            </mj-column>
+            <mj-raw>
+                @if (isset($data['photo2']))
+            </mj-raw>
+            <mj-column width="230px">
+                <mj-image width="230px" src="{{ asset('/storage/' . $data['photo2']) }}" alt="photo2_watch" />
+            </mj-column>
+            <mj-raw>
+                @endif
+            </mj-raw>
+            <mj-column width="0">
+                
+            </mj-column>
+            
+        </mj-section>
+        <mj-section>
+            <mj-column>
+                <mj-text align="center" font-size="13px">
+                    2024 - A Juwelier
+                </mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

@@ -102,7 +102,7 @@
                 >
                   
       <div
-         style="font-family:'Courier New', Courier, monospace;font-size:20px;line-height:1;text-align:center;color:#626262;"
+         style="font-family:'Courier New', Courier, monospace;font-size:25px;line-height:1;text-align:center;color:#626262;"
       >A Juwelier</div>
     
                 </td>
@@ -158,10 +158,16 @@
           <tr>
             <td  style="width:150px;">
               
+        <a
+           href="http://localhost:5174/" target="_blank"
+        >
+          
       <img
          alt="a juwelier" src="{{ asset('images/a-juwelier.jpg') }}" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="150" height="auto"
       />
     
+        </a>
+      
             </td>
           </tr>
         </tbody>
@@ -214,7 +220,7 @@
                 >
                   
       <div
-         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:15px;font-weight:600;line-height:1;text-align:center;color:#000000;"
+         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;line-height:1;text-align:center;color:#000000;"
       >Hi {{ $data['name'] }},</div>
     
                 </td>
@@ -226,8 +232,213 @@
                 >
                   
       <div
-         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#000000;"
+         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:center;color:#000000;"
       >thank you for contacting us, we'll be in touch very soon.</div>
+    
+                </td>
+              </tr>
+            
+        </tbody>
+      </table>
+    
+      </div>
+    
+          <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    
+      
+      <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    
+      
+      <div  style="margin:0px auto;max-width:600px;">
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"
+        >
+          <tbody>
+            <tr>
+              <td
+                 style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"
+              >
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+            
+      <div
+         class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
+      >
+        
+      <table
+         border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
+      >
+        <tbody>
+          
+              <tr>
+                <td
+                   align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                >
+                  
+      <div
+         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#000000;"
+      >Follow us on</div>
+    
+                </td>
+              </tr>
+            
+              <tr>
+                <td
+                   align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                >
+                  
+      
+     <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" ><tr><td><![endif]-->
+              <table
+                 align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"
+              >
+                <tbody>
+                  
+      <tr
+        
+      >
+        <td  style="padding:4px;vertical-align:middle;">
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:15px;"
+          >
+            <tbody>
+              <tr>
+                <td  style="font-size:0;height:15px;vertical-align:middle;width:15px;">
+                  <a  href="https://www.instagram.com/ajuwelierluxury/?igsh=ZGNjOWZkYTE3MQ%3D%3D&utm_source=qr" target="_blank">
+                    <img
+                       height="15" src="{{ asset('images/instagram.svg') }}" style="border-radius:3px;display:block;" width="15"
+                    />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        
+      </tr>
+    
+                </tbody>
+              </table>
+            <!--[if mso | IE]></td><td><![endif]-->
+              <table
+                 align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"
+              >
+                <tbody>
+                  
+      <tr
+        
+      >
+        <td  style="padding:4px;vertical-align:middle;">
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:15px;"
+          >
+            <tbody>
+              <tr>
+                <td  style="font-size:0;height:15px;vertical-align:middle;width:15px;">
+                  <a  href="https://www.tiktok.com/@a.juwelier?_t=8iXKFNjt4fh&_r=1" target="_blank">
+                    <img
+                       height="15" src="{{ asset('images/tiktok.svg') }}" style="border-radius:3px;display:block;" width="15"
+                    />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        
+      </tr>
+    
+                </tbody>
+              </table>
+            <!--[if mso | IE]></td><td><![endif]-->
+              <table
+                 align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"
+              >
+                <tbody>
+                  
+      <tr
+        
+      >
+        <td  style="padding:4px;vertical-align:middle;">
+          <table
+             border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:15px;"
+          >
+            <tbody>
+              <tr>
+                <td  style="font-size:0;height:15px;vertical-align:middle;width:15px;">
+                  <a  href="https://x.com/ajuwelier59583?s=11" target="_blank">
+                    <img
+                       height="15" src="{{ asset('images/x-twitter.svg') }}" style="border-radius:3px;display:block;" width="15"
+                    />
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        
+      </tr>
+    
+                </tbody>
+              </table>
+            <!--[if mso | IE]></td></tr></table><![endif]-->
+    
+    
+                </td>
+              </tr>
+            
+        </tbody>
+      </table>
+    
+      </div>
+    
+          <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    
+      
+      <!--[if mso | IE]></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" role="presentation" style="width:600px;" width="600" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+    
+      
+      <div  style="margin:0px auto;max-width:600px;">
+        
+        <table
+           align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"
+        >
+          <tbody>
+            <tr>
+              <td
+                 style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"
+              >
+                <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:600px;" ><![endif]-->
+            
+      <div
+         class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"
+      >
+        
+      <table
+         border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"
+      >
+        <tbody>
+          
+              <tr>
+                <td
+                   align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"
+                >
+                  
+      <div
+         style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#000000;"
+      >2024 - A Juwelier</div>
     
                 </td>
               </tr>
