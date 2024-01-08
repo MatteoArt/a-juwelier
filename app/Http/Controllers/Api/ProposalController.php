@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\StoreProposalRequest;
-
+use App\Mail\ConfirmToUser;
 use App\Models\Proposal;
 use App\Mail\NewSellProposal;
 
@@ -53,6 +53,8 @@ class ProposalController extends Controller
 
         $admin_mail = 'admin.mail@gmail.com';
         Mail::to($admin_mail)->send(new NewSellProposal($data));
+
+        Mail::to($data['email'])->send(new ConfirmToUser($data));
 
         $informations = $data['informations'];
 

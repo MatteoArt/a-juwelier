@@ -2,12 +2,14 @@
 
 @section('content')
     <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-md-flex align-items-md-center justify-content-md-between">
             <h2 class="fs-4 text-secondary my-4">
                 Welcome to your <span class="text-uppercase">dashboard</span>,
                 <span class="text-primary-emphasis">{{ Auth::user()->name }}</span>
             </h2>
-            <a href="{{ route('watches.create') }}" class="btn btn-outline-success">Add <i class="fa-solid fa-plus"></i></a>
+            <div class="text-end text-md-start mb-3 mb-md-0">
+                <a href="{{ route('watches.create') }}" class="btn btn-outline-success">Add <i class="fa-solid fa-plus"></i></a>
+            </div>
         </div>
         <div class="row justify-content-center">
             <div class="col">
@@ -22,7 +24,7 @@
 
                         <div class="row row-gap-3">
                             @foreach ($watches as $watch)
-                                <div class="col-sm-4">
+                                <div class="col-md-6 col-lg-4">
                                     <div class="card h-100">
                                         @php
                                             $path = json_decode($watch->images);

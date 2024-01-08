@@ -1,0 +1,75 @@
+<mjml>
+    <mj-body>
+        <mj-section background-color="#f0f0f0">
+            <mj-column>
+                <mj-text align="center" font-size="25px"
+                font-family="'Courier New', Courier, monospace"
+                color="#626262">
+                    A Juwelier
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#F4F3EF">
+            <mj-column>
+                <mj-image width="150px" src="{{ asset('images/a-juwelier.jpg') }}"
+                href="http://localhost:5174/" alt="a juwelier" />
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+                <mj-text align="center" font-weight="600" font-size="18px">
+                    Hi {{ $data['fullname'] }}, 
+                </mj-text>
+                <mj-text align="center" font-size="17px">
+                    thank you for contacting us, we will evaluate your proposal and contact you as soon as possible.
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+                <mj-text align="left" font-size="16px">
+                    Your watch: 
+                    @if ($data['informations'][0])
+                    <span style="font-weight:500;">{{ $data['informations'][0] }}</span>
+                    @endif
+                    @if ($data['informations'][1])
+                    <span style="font-weight:500;">{{ $data['informations'][1] }}</span>
+                    @endif
+                    @if ($data['informations'][2])
+                    <span style="font-weight:500;">{{ $data['informations'][2] }}</span>
+                    @endif
+                </mj-text>
+                <mj-text align="left" font-size="16px">
+                    Your price: {{ $data['price'] }} €
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+            <mj-text align="center" font-size="13px">
+                Follow us on
+            </mj-text>
+              <mj-social icon-size="15px" mode="horizontal">
+                  <mj-social-element href="https://www.instagram.com/ajuwelierluxury/?igsh=ZGNjOWZkYTE3MQ%3D%3D&utm_source=qr"
+                  src="{{ asset('images/instagram.svg') }}">
+                    
+                  </mj-social-element>
+                  <mj-social-element href="https://www.tiktok.com/@a.juwelier?_t=8iXKFNjt4fh&_r=1"
+                  src="{{ asset('images/tiktok.svg') }}">
+                    
+                  </mj-social-element>
+                  <mj-social-element href="https://x.com/ajuwelier59583?s=11" src="{{ asset('images/x-twitter.svg') }}">
+                    
+                  </mj-social-element>
+              </mj-social>
+            </mj-column>
+        </mj-section>
+        <mj-section>
+            <mj-column>
+                <mj-text align="center" font-size="13px">
+                    2024 - A Juwelier
+                </mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>
