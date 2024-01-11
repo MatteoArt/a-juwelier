@@ -24,3 +24,36 @@
 .my-bg-home {
     background-color: #F4F3EF;
 }
+@media screen and (max-width: 375px) {
+    
+}
+
+@media screen and (max-width: 500px) {
+    .my-position {
+      position: relative;
+    }
+  
+    .my-position-btn-1 {
+      position: absolute;
+      top: -70px;
+      left: 100px;
+    }
+  
+    .my-position-btn-2 {
+      position: absolute;
+      top: -70px;
+      left: 230px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .my-width {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .my-list-width {
+        width: 234.883px;
+    }
+}

@@ -3,14 +3,14 @@
 
 @section('content')
     <a href="{{ route('dashboard') }}" class="btn btn-outline-dark m-3"><i class="fa-solid fa-arrow-left"></i> Back</a>
-    <div class="container my-3">
-        <div class="d-flex align-items-center">
+    <div class="container-lg my-3">
+        <div class="d-flex align-items-center my-position">
             <h2 class="me-4">{{ $watch->brand }}</h2>
-            <a href="{{ route('watches.edit', $watch->slug) }}" class="btn btn-outline-warning ms-5">
+            <a href="{{ route('watches.edit', $watch->slug) }}" class="btn btn-outline-warning ms-5 my-position-btn-1">
                 Edit
                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
             </a>
-            <form action="{{ route('watches.destroy', $watch->slug) }}" class="ms-2" method="POST">
+            <form action="{{ route('watches.destroy', $watch->slug) }}" class="ms-2 my-position-btn-2" method="POST">
                 @csrf
 
                 @method('DELETE')
@@ -34,11 +34,11 @@
             @php
                 $strings = json_decode($watch->characteristics);
             @endphp
-            <ul class="list-group list-group-flush w-50">
+            <ul class="list-group list-group-flush my-width">
                 @foreach ($strings as $string)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item d-flex justify-content-between align-items-center ps-0">
                         <span class="fw-semibold">{{ $labels[$loop->index] }}</span>
-                        <div style="width: 234.883px">{{ ucfirst(trim($string)) }}</div>
+                        <div class="my-list-width">{{ ucfirst(trim($string)) }}</div>
                     </li>
                 @endforeach
             </ul>
