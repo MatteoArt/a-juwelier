@@ -24,8 +24,13 @@
 .my-bg-home {
     background-color: #F4F3EF;
 }
-@media screen and (max-width: 375px) {
-    
+@media screen and (max-width: 385px) {
+    .my-position-btn-2-extra-small {
+        position: absolute !important;
+        left: 130px !important;
+        top: -20px !important;
+        margin-left: 3rem !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -36,13 +41,13 @@
     .my-position-btn-1 {
       position: absolute;
       top: -70px;
-      left: 100px;
+      left: 130px;
     }
   
     .my-position-btn-2 {
       position: absolute;
       top: -70px;
-      left: 230px;
+      left: 260px;
     }
 }
 

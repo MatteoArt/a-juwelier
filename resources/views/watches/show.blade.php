@@ -10,7 +10,7 @@
                 Edit
                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
             </a>
-            <form action="{{ route('watches.destroy', $watch->slug) }}" class="ms-2 my-position-btn-2" method="POST">
+            <form action="{{ route('watches.destroy', $watch->slug) }}" class="ms-2 my-position-btn-2 my-position-btn-2-extra-small" method="POST">
                 @csrf
 
                 @method('DELETE')
