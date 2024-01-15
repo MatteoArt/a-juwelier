@@ -3,10 +3,10 @@
 
 @section('content')
     <a href="{{ route('dashboard') }}" class="btn btn-outline-dark m-3"><i class="fa-solid fa-arrow-left"></i> Back</a>
-    <div class="container py-3">
+    <div class="container-lg py-3">
         <h2>Add a watch</h2>
 
-        <form action="{{ route('watches.store') }}" method="POST" enctype="multipart/form-data" class="w-50">
+        <form action="{{ route('watches.store') }}" method="POST" enctype="multipart/form-data" class="my-form-watch">
             @csrf
 
             <div class="mb-3">
@@ -50,7 +50,7 @@
                         <input type="text" name="characteristics[]" class="form-control" id="label{{ $label }}"
                         value="{{ old('characteristics.' . $loop->index) }}">
                         @if ($errors->has('characteristics.' . $loop->index))
-                            <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 280px">
+                            <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 250px">
                                 {{ $errors->first('characteristics.' . $loop->index) }}</div>
                         @endif
                     @endforeach
@@ -60,7 +60,7 @@
                 <label for="imagesInput" class="form-label text-body-secondary">Images</label>
                 <input type="file" class="form-control" name="images[]" id="imagesInput" accept="image/*" multiple>
                 @if ($errors->has('images'))
-                    <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 280px">
+                    <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 250px">
                         {{ $errors->first('images') }}</div>
                 @endif
                 @if ($errors->has('images.*'))

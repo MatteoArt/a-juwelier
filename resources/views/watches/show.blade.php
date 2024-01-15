@@ -5,7 +5,7 @@
     <a href="{{ route('dashboard') }}" class="btn btn-outline-dark m-3"><i class="fa-solid fa-arrow-left"></i> Back</a>
     <div class="container-lg my-3">
         <div class="d-flex align-items-center my-position">
-            <h2 class="me-4">{{ $watch->brand }}</h2>
+            <h2 class="me-4 my-title-small">{{ $watch->brand }}</h2>
             <a href="{{ route('watches.edit', $watch->slug) }}" class="btn btn-outline-warning ms-5 my-position-btn-1">
                 Edit
                 <i class="fa-solid fa-pen-to-square fa-lg"></i>
@@ -45,13 +45,15 @@
         </div>
         <div class="mt-3">
             <span class="fs-5 d-block mb-2">All images:</span>
-            <div>
+            <div class="d-flex flex-wrap row-gap-3">
                 @php
                     $imagesArr = json_decode($watch->images);
                 @endphp
                 @foreach ($imagesArr as $image)
-                    <img src="{{ asset('/storage/' . $image) }}" class="img-thumbnail my-thumb-show me-3"
+                <div class="img-show-container">
+                    <img src="{{ asset('/storage/' . $image) }}" class="img-fluid me-3"
                         alt="{{ $watch->brand . $loop->index }}">
+                </div>
                 @endforeach
             </div>
         </div>

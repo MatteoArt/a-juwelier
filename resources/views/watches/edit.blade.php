@@ -3,9 +3,9 @@
 
 @section('content')
     <a href="{{ route('dashboard') }}" class="btn btn-outline-dark m-3"><i class="fa-solid fa-arrow-left"></i> Back to dashboard</a>
-    <div class="container py-3">
+    <div class="container-lg py-3">
         <h2>Edit watch</h2>
-        <form action="{{ route('watches.update', $watch->slug) }}" method="POST" class="w-50" enctype="multipart/form-data">
+        <form action="{{ route('watches.update', $watch->slug) }}" method="POST" class="my-form-watch" enctype="multipart/form-data">
             @csrf
 
             @method('PUT')
@@ -54,7 +54,7 @@
                         <input type="text" name="characteristics[]" class="form-control" id="label{{ $label }}"
                         value="{{ $characteristics[$loop->index] }}">
                         @if ($errors->has('characteristics.' . $loop->index))
-                            <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 280px">
+                            <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 250px">
                                 {{ $errors->first('characteristics.' . $loop->index) }}</div>
                         @endif
                     @endforeach
@@ -75,7 +75,7 @@
 
                 <input type="file" class="form-control" name="images[]" id="imagesInput" accept="image/*" multiple>
                 @if ($errors->has('images'))
-                    <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 280px">
+                    <div class="text-danger bg-danger-subtle d-block mt-1 rounded-2 p-2" style="width: 250px">
                         {{ $errors->first('images') }}</div>
                 @endif
                 @if ($errors->has('images.*'))
