@@ -32,6 +32,12 @@
     height: 400px;
 }
 
+@media screen and (max-width: 350px) {
+    .my-padding-small {
+        padding: 8px;
+    }
+}
+
 @media screen and (max-width: 385px) {
     .my-position-btn-2-extra-small {
         position: absolute !important;
@@ -43,6 +49,18 @@
     .my-title-small {
         width: 175px;
         word-wrap: break-word;
+    }
+
+    .my-form-control {
+        width: 100% !important;
+        border-radius: 8px !important;
+    }
+    .my-form-button {
+        margin-top: 10px;
+        border-radius: 10px !important;
+    }
+    .my-form-width {
+        width: 230px !important;
     }
 }
 
