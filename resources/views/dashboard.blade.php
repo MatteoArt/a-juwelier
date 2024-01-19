@@ -17,10 +17,14 @@
                 <div class="card">
                     <div class="card-header d-sm-flex align-items-sm-center gap-4 my-padding-small">
                         <span class="d-inline-block mb-2 mb-sm-0">Your watches</span>
-                        <form action="" style="width: 300px" class="my-form-width">
+                        <form action="{{ route('dashboard') }}" style="width: 300px" class="my-form-width" method="GET">
+                            @csrf
                             <div class="input-group">
-                                <input type="text" class="form-control my-form-control" placeholder="Filter by brand/model/ref">
-                                <button type="submit" class="btn btn-dark my-form-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" name="search" id="searchInput" class="form-control my-form-control"
+                                    placeholder="Filter by brand/model/ref">
+                                <button type="submit" class="btn btn-dark my-form-button">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -32,68 +36,76 @@
                         @endif
 
                         <div class="row row-gap-3">
-                            @foreach ($watches as $watch)
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="card h-100">
-                                        @php
-                                            $path = json_decode($watch->images);
-                                        @endphp
-                                        <div class="my-img-container">
-                                            <img src="{{ asset('/storage/' . $path[0]) }}" class="card-img-top"
-                                                alt="{{ $watch->brand }}">
-                                        </div>
-
-                                        <div class="card-body d-flex flex-column">
-                                            <h5 class="card-title"> {{ $watch->brand }} </h5>
-                                            <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $watch->model }} </h6>
-                                            <div>Ref. {{ $watch->ref }}</div>
-                                            <div class="mt-2">Price: <span class="d-inline-block ms-1">
-                                                    € {{ number_format((float) $watch->price, 2, '.', '') }}
-                                                </span>
-                                            </div>
-                                            <div class="mt-3">Characteristics:</div>
+                            @if (count($watches) > 0)
+                                @foreach ($watches as $watch)
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="card h-100">
                                             @php
-                                                $strings = json_decode($watch->characteristics);
+                                                $path = json_decode($watch->images);
                                             @endphp
-                                            <p class="card-text">
-                                                @foreach ($strings as $string)
-                                                    @if ($loop->last)
-                                                        <span>{{ $string }}.</span>
-                                                    @else
-                                                        <span>{{ $string }},</span>
-                                                    @endif
-                                                @endforeach
-                                            </p>
-                                            <div class="d-flex justify-content-between mt-auto">
-                                                <a href="{{ route('watches.show', $watch->slug) }}"
-                                                    class="btn btn-outline-info">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a>
-                                                <div>
-                                                    <a href="{{ route('watches.edit', $watch->slug) }}"
-                                                        class="btn btn-outline-warning">
-                                                        Edit
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                    <form action="{{ route('watches.destroy', $watch->slug) }}"
-                                                        class="d-inline-block ms-1 my-delete" method="POST">
-                                                        @csrf
+                                            <div class="my-img-container">
+                                                <img src="{{ asset('/storage/' . $path[0]) }}" class="card-img-top"
+                                                    alt="{{ $watch->brand }}">
+                                            </div>
 
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm('Are you sure you want to proceed?')">
-                                                            Delete
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
-                                                    </form>
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"> {{ $watch->brand }} </h5>
+                                                <h6 class="card-subtitle mb-2 text-body-secondary"> {{ $watch->model }}
+                                                </h6>
+                                                <div>Ref. {{ $watch->ref }}</div>
+                                                <div class="mt-2">Price: <span class="d-inline-block ms-1">
+                                                        € {{ number_format((float) $watch->price, 2, '.', '') }}
+                                                    </span>
                                                 </div>
+                                                <div class="mt-3">Characteristics:</div>
+                                                @php
+                                                    $strings = json_decode($watch->characteristics);
+                                                @endphp
+                                                <p class="card-text">
+                                                    @foreach ($strings as $string)
+                                                        @if ($loop->last)
+                                                            <span>{{ $string }}.</span>
+                                                        @else
+                                                            <span>{{ $string }},</span>
+                                                        @endif
+                                                    @endforeach
+                                                </p>
+                                                <div class="d-flex justify-content-between mt-auto">
+                                                    <a href="{{ route('watches.show', $watch->slug) }}"
+                                                        class="btn btn-outline-info">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </a>
+                                                    <div>
+                                                        <a href="{{ route('watches.edit', $watch->slug) }}"
+                                                            class="btn btn-outline-warning">
+                                                            Edit
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </a>
+                                                        <form action="{{ route('watches.destroy', $watch->slug) }}"
+                                                            class="d-inline-block ms-1 my-delete" method="POST">
+                                                            @csrf
 
+                                                            @method('DELETE')
+
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm('Are you sure you want to proceed?')">
+                                                                Delete
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
+                            @else
+                                <div class="alert alert-danger w-25" role="alert">
+                                    No results found
                                 </div>
-                            @endforeach
+                            @endif
+
                         </div>
                     </div>
                 </div>

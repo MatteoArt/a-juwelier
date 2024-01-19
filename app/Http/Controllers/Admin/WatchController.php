@@ -16,11 +16,20 @@ use Illuminate\Support\Facades\Storage;
 
 class WatchController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-        //recupero tutti gli orologi dal db
-        $watches = Watch::all();
+        $filter = $request->query('search');
+        $query = Watch::query();
+
+        if ($filter) {
+            $watches = $query->where('brand', 'like', '%' . $filter . '%')
+                ->orWhere('model', 'like', '%' . $filter . '%')
+                ->orWhere('ref', 'like', '%' . $filter . '%')->get();
+        } else {
+            //recupero tutti gli orologi dal db
+            $watches = Watch::all();
+        }
 
         return view('dashboard', [
             'watches' => $watches
@@ -73,7 +82,7 @@ class WatchController extends Controller
     public function store(StoreWatchRequest $request)
     {
         $data = $request->validated();
-        
+
         $labels = [
             'Brand',
             'Model',
@@ -88,7 +97,7 @@ class WatchController extends Controller
         ];
 
         $characteristics = $data['characteristics'];
-        
+
         $data['characteristics'] = json_encode($characteristics);
 
         $data['labels'] = json_encode($labels);
@@ -155,15 +164,15 @@ class WatchController extends Controller
                 Storage::delete($files);
             }
             foreach ($request->file('images') as $index => $image) {
-                $newImageName = $data['model'].'-image-'.time().rand(1, 1000).'.'.$image->getClientOriginalExtension();
-                
+                $newImageName = $data['model'] . '-image-' . time() . rand(1, 1000) . '.' . $image->getClientOriginalExtension();
+
                 //ora recupera vecchia immagine e poi cancellala solo se quella chiave esiste nell'array
                 //originario delle vecchie immagini (l'utente potrebbe passarmi più immagini di quelle
                 //memorizzate in precedenza)
-                if (array_key_exists($index,$old_images)) {
+                if (array_key_exists($index, $old_images)) {
                     $old_img = $old_images[$index];
 
-                    if (Storage::exists($old_img) ) {
+                    if (Storage::exists($old_img)) {
                         Storage::delete($old_img); //elimino immagine vecchia
                     }
                 }
@@ -172,12 +181,10 @@ class WatchController extends Controller
                 $new_image_path = $image->storeAs($directory_name, $newImageName, 'public');
 
                 array_push($newImagesList, $new_image_path);
-                
             }
-            
+
             //faccio reverse perchè altrimenti mi carica prima le ultime selezionate
             $data['images'] = json_encode(array_reverse($newImagesList));
-            
         } else { //significa che non si vogliono modificare le foto e quindi rimangono invariate
             $data['images'] = $old_images;
         }
