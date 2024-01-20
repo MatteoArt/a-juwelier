@@ -2,6 +2,10 @@
 
 @section('content')
     <div class="container">
+        <div class="d-flex justify-content-end gap-2 mt-3">
+            <a href="{{ route('contacts') }}" class="btn btn-outline-info">Message box</a>
+            <a href="{{ route('proposals') }}" class="btn btn-outline-primary">Sales proposals</a>
+        </div>
         <div class="d-md-flex align-items-md-center justify-content-md-between">
             <h2 class="fs-4 text-secondary my-4">
                 Welcome to your <span class="text-uppercase">dashboard</span>,

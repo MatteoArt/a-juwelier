@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\WatchController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProposalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//messages
+Route::get('/contacts', [ContactController::class, 'index'])
+->middleware(['auth', 'verified'])->name('contacts');
+Route::delete('contacts/{id}', [ContactController::class, 'destroy'])
+->middleware(['auth', 'verified'])->name('contacts-delete');
+
+//proposals
+Route::get('/proposals', [ProposalController::class, 'index'])
+->middleware(['auth', 'verified'])->name('proposals');
 
 /* CRUD **************/
 //index di tutti gli orologi
