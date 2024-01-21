@@ -30,6 +30,10 @@ Route::delete('contacts/{id}', [ContactController::class, 'destroy'])
 //proposals
 Route::get('/proposals', [ProposalController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('proposals');
+Route::get('proposal/{id}', [ProposalController::class, 'show'])
+->middleware(['auth', 'verified'])->name('proposal-show');
+Route::delete('proposal/{id}', [ProposalController::class, 'destroy'])
+->middleware(['auth', 'verified'])->name('proposal-delete');
 
 /* CRUD **************/
 //index di tutti gli orologi
