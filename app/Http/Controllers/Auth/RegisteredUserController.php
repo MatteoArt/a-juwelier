@@ -1,5 +1,6 @@
 <?php
 
+/* disabilito la possibilità di registrarsi poichè ci deve essere un solo admin  */
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
