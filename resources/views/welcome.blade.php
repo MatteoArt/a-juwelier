@@ -11,7 +11,7 @@
         </h1>
 
         <p class="col-md-8 fs-4 mt-3 mb-4">Here you can manage your website A Juwelier</p>
-        <a href="{{ env(APP_FRONTEND_URL) }}" class="btn btn-outline-success btn-lg" target="_blank" type="button">Go to site</a>
+        <a href="https://ajuwelier.de" class="btn btn-outline-success btn-lg" target="_blank" type="button">Go to site</a>
     </div>
 </div>
 @endsection
