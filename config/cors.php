@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [env('APP_FRONTEND_URL', 'https://ajuwelier.de')],
 
     'allowed_origins_patterns' => [],
 
