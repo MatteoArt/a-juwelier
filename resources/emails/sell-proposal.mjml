@@ -9,7 +9,7 @@
     </mj-section>
     <mj-section background-color="#F4F3EF">
       <mj-column>
-        <mj-image width="150px" src="{{ asset('images/a-juwelier.jpg') }}" href="http://localhost:5174/" alt="a juwelier" />
+        <mj-image width="150px" src="{{ asset('images/a-juwelier.jpg') }}" href="https://ajuwelier.de/" alt="a juwelier" />
       </mj-column>
     </mj-section>
     <mj-section>

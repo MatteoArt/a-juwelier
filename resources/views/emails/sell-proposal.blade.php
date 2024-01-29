@@ -165,7 +165,7 @@
             <td  style="width:150px;">
               
         <a
-           href="http://localhost:5174/" target="_blank"
+           href="https://ajuwelier.de/" target="_blank"
         >
           
       <img
