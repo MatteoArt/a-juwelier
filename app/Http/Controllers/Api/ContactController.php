@@ -25,7 +25,7 @@ class ContactController extends Controller
 
         //invio la mail all'amministratore per notificarlo di un nuovo messaggio dal suo
         //sito
-        $admin_mail = 'matteo.artizzu1196@gmail.com';
+        $admin_mail = 'a.juwelier.luxury@gmail.com';
         Mail::to($admin_mail)->send(new NewContact($data));
 
         //invio anche una mail di conferma all'utente che ha compilato il form

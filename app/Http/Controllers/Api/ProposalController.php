@@ -51,7 +51,7 @@ class ProposalController extends Controller
             $data['photo3'] = $image_path3;
         }
 
-        $admin_mail = 'matteo.artizzu1196@gmail.com';
+        $admin_mail = 'a.juwelier.luxury@gmail.com';
         Mail::to($admin_mail)->send(new NewSellProposal($data));
 
         Mail::to($data['email'])->send(new ConfirmToUser($data));
