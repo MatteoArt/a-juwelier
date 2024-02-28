@@ -54,6 +54,7 @@ class UpdateWatchRequest extends FormRequest
 
 
     public function attributes(): array
+    
     {
         return [
             'characteristics.0' => 'brand',
