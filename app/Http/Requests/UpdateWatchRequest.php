@@ -30,13 +30,14 @@ class UpdateWatchRequest extends FormRequest
             'characteristics.0' => 'required|string|max:150',
             'characteristics.1' => 'required|string|max:200',
             'characteristics.2' => 'required|string|max:100',
-            'characteristics.3' => 'string|nullable|max:100',
+            'characteristics.3' => 'required',
             'characteristics.4' => 'string|nullable|max:100',
             'characteristics.5' => 'string|nullable|max:100',
             'characteristics.6' => 'string|nullable|max:100',
             'characteristics.7' => 'string|nullable|max:100',
             'characteristics.8' => 'string|nullable|max:100',
             'characteristics.9' => 'string|nullable|max:100',
+            'characteristics.10' => 'string|nullable|max:100',
             'images' => 'nullable',
             'images.*' => 'image|mimes:png,jpg,jpeg,gif,svg,webp|max:2048'
         ];
@@ -60,13 +61,14 @@ class UpdateWatchRequest extends FormRequest
             'characteristics.0' => 'brand',
             'characteristics.1' => 'model',
             'characteristics.2' => 'ref. no.',
-            'characteristics.3' => 'case size',
-            'characteristics.4' => 'case material',
-            'characteristics.5' => 'bezel',
-            'characteristics.6' => 'bracelet material',
-            'characteristics.7' => 'box',
-            'characteristics.8' => 'cards/papers',
-            'characteristics.9' => 'condition'
+            'characteristics.3' => 'year',
+            'characteristics.4' => 'case size',
+            'characteristics.5' => 'case material',
+            'characteristics.6' => 'bezel',
+            'characteristics.7' => 'bracelet material',
+            'characteristics.8' => 'box',
+            'characteristics.9' => 'cards/papers',
+            'characteristics.10' => 'condition'
         ];
     }
 }
