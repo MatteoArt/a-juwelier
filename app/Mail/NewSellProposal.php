@@ -24,7 +24,7 @@ class NewSellProposal extends Mailable
         'Strap/bracelet material',
         'Original strap/bracelet',
         'Original bracelet buckle/clasp',
-        'Production year',
+        'Year of the watch',
         'State of wear of the watch',
         'Do you still have the original watch box?',
         'Do you still have the original watch warranty?'
