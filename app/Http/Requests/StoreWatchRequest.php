@@ -37,8 +37,7 @@ class StoreWatchRequest extends FormRequest
             'characteristics.8' => 'string|nullable|max:100',
             'characteristics.9' => 'string|nullable|max:100',
             'characteristics.10' => 'string|nullable|max:100',
-            'images' => 'required',
-            'images.*' => 'image|mimes:png,jpg,jpeg,gif,svg,webp|max:2048'
+            'images' => 'required'
         ];
     }
 
