@@ -56,11 +56,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                            <!-- commento questo codice per disabilitare la registrazione ad utenti esterni
+                            @if (Route::has('register') && Auth::check())
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>   -->
+                                </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
